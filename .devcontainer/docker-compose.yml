@@ -1,0 +1,23 @@
+version: "3.4"
+
+services:
+  code:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+      args:
+       - "--cap-add=SYS_PTRACE"
+       - "--security-opt"
+       - "seccomp=unconfined"
+    working_dir: /workspace
+    volumes:
+      - local_repository:/workspace:cached
+    command: sleep infinity
+
+volumes:
+  local_repository:
+    driver: local
+    driver_opts:
+      type: none
+      device: "./" #this should resolve as an absolute path to the root of repo
+      o: bind
