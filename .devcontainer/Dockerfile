@@ -20,4 +20,5 @@ RUN rustup default nightly && \
 
 EXPOSE 9944
 
-RUN git config --global submodule.recurse true
+#RUN git config --global submodule.recurse true
+#RUN git config --global core.autocrlf input
